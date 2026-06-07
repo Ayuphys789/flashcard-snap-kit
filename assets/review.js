@@ -44,7 +44,7 @@ async function gatherWeak(){
     const idx=indexByItemId(data);
     byPage[pid].forEach(iid=>{
       const e=idx[iid]; if(!e) return;
-      out.push({ pageId:pid, itemId:iid, pageTitle:titles[pid]||('ページ '+pid), mode:e.mode, item:e.item, lang:data.lang||'en-US' });
+      out.push({ pageId:pid, itemId:iid, pageTitle:titles[pid]||('ページ '+pid), mode:e.mode, item:e.item, lang:data.lang||'en-US', tts:data.tts!==false });
     });
   }
   return out;
@@ -69,7 +69,7 @@ function render(items, totalCount){
   const sec=document.createElement('section');
   items.forEach((w,n)=>{
     const card=FTKCards.buildCard({
-      mode:w.mode, item:w.item, idx:n, state:'weak', lang:w.lang, sourceLabel:w.pageTitle,
+      mode:w.mode, item:w.item, idx:n, state:'weak', lang:w.lang, tts:w.tts, sourceLabel:w.pageTitle,
       onState:(st)=>FTKProgress.set(w.pageId, w.itemId, st),
       onReveal:updateScore
     });

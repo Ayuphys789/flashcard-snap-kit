@@ -47,7 +47,7 @@ function render(){
       const id = itemIdOf(mode, item, i);
       if(weakMode && FTKProgress.get(PAGE_ID, id) !== 'weak') return;
       const card = FTKCards.buildCard({
-        mode: mode, item: item, idx: i, state: FTKProgress.get(PAGE_ID, id), lang: DATA.lang,
+        mode: mode, item: item, idx: i, state: FTKProgress.get(PAGE_ID, id), lang: DATA.lang, tts: DATA.tts !== false,
         onState: (st)=>{ FTKProgress.set(PAGE_ID, id, st); updateStats(); },
         onReveal: updateScore
       });

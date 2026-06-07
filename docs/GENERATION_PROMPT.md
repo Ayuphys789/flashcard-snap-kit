@@ -51,6 +51,8 @@ Use the `sentence` mode and map fields as follows:
   put 書き下し文 either in `reading` of a term, or as the first `notes` line
   `["書き下し", "…"]`; `translation` = 現代語訳; `grammar` = 句形の解説.
 - Transcribe okurigana, 返り点, and 振り仮名 as faithfully as the image allows.
+- Set the page-level `"tts": false` so the 🔊 read-aloud button is hidden
+  (browser TTS does not suit 古文/漢文). `lang` may then be omitted.
 
 ## First real use — replace the sample pages
 The repo ships with sample pages (`data/page-001.json` 韓国語 / `data/page-002.json`

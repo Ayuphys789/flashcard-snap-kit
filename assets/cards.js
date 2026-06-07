@@ -78,7 +78,7 @@
 
     const actions = document.createElement('div'); actions.className = 'q-actions';
 
-    if (speakText && global.speechSynthesis){
+    if (speakText && opts.tts !== false && global.speechSynthesis){
       const sp = document.createElement('button');
       sp.className = 'icon-btn speak'; sp.textContent = '🔊'; sp.title = '発音';
       sp.addEventListener('click', () => speak(speakText, opts.lang));

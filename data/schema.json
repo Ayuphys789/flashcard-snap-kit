@@ -23,6 +23,10 @@
       "type": "string",
       "description": "BCP-47 code of the studied language, e.g. \"ko-KR\", \"es-ES\". Used for text-to-speech."
     },
+    "tts": {
+      "type": "boolean",
+      "description": "Whether to show the 🔊 read-aloud button (browser TTS). Default true. Set false for 古文/漢文 and other content that should not be read aloud."
+    },
     "modes": {
       "type": "array",
       "description": "Which test types are enabled for this page, in display order.",

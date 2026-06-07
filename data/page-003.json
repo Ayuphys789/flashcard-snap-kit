@@ -3,6 +3,7 @@
   "title": "古文サンプル（竹取物語 冒頭）",
   "source": "デモ用サンプル・原文は古典（パブリックドメイン）",
   "lang": "ja-JP",
+  "tts": false,
   "modes": ["sentence", "grammar"],
   "sentences": [
     {
