@@ -1,0 +1,33 @@
+{
+  "id": "002",
+  "title": "English basics",
+  "source": "Demo sample (no copyrighted material)",
+  "lang": "en-US",
+  "modes": ["term", "sentence"],
+  "terms": [
+    { "id": "t1", "term": "apple", "tag": "noun", "translation": "りんご" },
+    { "id": "t2", "term": "book", "tag": "noun", "translation": "本" },
+    { "id": "t3", "term": "water", "tag": "noun", "translation": "水" },
+    { "id": "t4", "term": "friend", "tag": "noun", "translation": "友達" },
+    { "id": "t5", "term": "school", "tag": "noun", "translation": "学校" },
+    { "id": "t6", "term": "to eat", "tag": "verb", "translation": "食べる" },
+    { "id": "t7", "term": "to run", "tag": "verb", "translation": "走る" },
+    { "id": "t8", "term": "beautiful", "tag": "adj", "translation": "美しい" },
+    { "id": "t9", "term": "quickly", "tag": "adv", "translation": "速く" },
+    { "id": "t10", "term": "happy", "tag": "adj", "translation": "うれしい・幸せな" }
+  ],
+  "sentences": [
+    {
+      "id": "s1",
+      "text": "I read a book every day.",
+      "translation": "私は毎日本を読みます。",
+      "notes": [ ["read", "読む"], ["every day", "毎日"] ]
+    },
+    {
+      "id": "s2",
+      "text": "She runs very quickly.",
+      "translation": "彼女はとても速く走ります。",
+      "notes": [ ["very", "とても"] ]
+    }
+  ]
+}

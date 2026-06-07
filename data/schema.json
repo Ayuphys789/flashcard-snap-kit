@@ -1,0 +1,145 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Flashcard Test Page",
+  "type": "object",
+  "required": [
+    "id",
+    "modes"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Page id, e.g. \"001\". Must match the filename page-<id>.json."
+    },
+    "title": {
+      "type": "string",
+      "description": "Display title of this page/lesson."
+    },
+    "source": {
+      "type": "string",
+      "description": "Free-text reference, e.g. \"Vocab Book p.12-13\"."
+    },
+    "lang": {
+      "type": "string",
+      "description": "BCP-47 code of the studied language, e.g. \"ko-KR\", \"es-ES\". Used for text-to-speech."
+    },
+    "modes": {
+      "type": "array",
+      "description": "Which test types are enabled for this page, in display order.",
+      "items": {
+        "enum": [
+          "term",
+          "sentence",
+          "grammar"
+        ]
+      },
+      "minItems": 1
+    },
+    "terms": {
+      "type": "array",
+      "description": "Vocabulary items (term test).",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "term",
+          "translation"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Stable id, unique within this page (e.g. \"t1\"). Travels with the item; never renumber or reuse it (progress is keyed on it)."
+          },
+          "term": {
+            "type": "string",
+            "description": "The word/phrase in the studied language."
+          },
+          "translation": {
+            "type": "string",
+            "description": "Meaning in the learner's language."
+          },
+          "tag": {
+            "type": "string",
+            "description": "Optional label, e.g. part of speech."
+          },
+          "reading": {
+            "type": "string",
+            "description": "Optional pronunciation/reading aid."
+          }
+        }
+      }
+    },
+    "sentences": {
+      "type": "array",
+      "description": "Example sentences (sentence test). Also used for 古文/漢文 passages.",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "text",
+          "translation"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Stable id, unique within this page (e.g. \"s1\"). Travels with the item; never renumber or reuse it (progress is keyed on it)."
+          },
+          "text": {
+            "type": "string",
+            "description": "Sentence in the studied language."
+          },
+          "translation": {
+            "type": "string",
+            "description": "Translation in the learner's language."
+          },
+          "notes": {
+            "type": "array",
+            "description": "Word/expression glosses. EXCLUDE items already in this page's terms[].",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            }
+          },
+          "grammar": {
+            "type": "string",
+            "description": "Optional grammar point for this sentence."
+          }
+        }
+      }
+    },
+    "grammar": {
+      "type": "array",
+      "description": "Standalone grammar points (grammar test).",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "point",
+          "explanation"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Stable id, unique within this page (e.g. \"g1\"). Travels with the item; never renumber or reuse it (progress is keyed on it)."
+          },
+          "point": {
+            "type": "string",
+            "description": "The grammar form/pattern."
+          },
+          "explanation": {
+            "type": "string",
+            "description": "How it works / how to translate it."
+          },
+          "example": {
+            "type": "string",
+            "description": "Optional example usage."
+          }
+        }
+      }
+    }
+  }
+}

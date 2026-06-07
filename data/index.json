@@ -1,0 +1,9 @@
+{
+  "title": "パシャっと単語帳（デモ）",
+  "subtitle": "サンプルデータ：韓国語・英語・古文。著作権物は含みません。",
+  "pages": [
+    { "id": "001", "title": "韓国語のあいさつ・基礎", "source": "デモ用サンプル（著作権物を含みません）" },
+    { "id": "002", "title": "English basics", "source": "Demo sample (no copyrighted material)" },
+    { "id": "003", "title": "古文サンプル（竹取物語 冒頭）", "source": "デモ用サンプル・原文は古典（パブリックドメイン）" }
+  ]
+}

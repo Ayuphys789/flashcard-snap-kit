@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Flashcards">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="assets/icon-180.png">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
+<title>苦手の復習</title>
+<link rel="stylesheet" href="assets/style.css?v=2">
+</head>
+<body>
+<div class="wrap">
+  <a class="backlink" href="index.html">← 一覧へ</a>
+  <header>
+    <h1>苦手の復習</h1>
+    <p class="lead" id="reviewLead">✕（苦手）を付けた項目から、全ページ横断でランダム出題します。</p>
+  </header>
+
+  <div class="toolbar">
+    <button id="showAll">全て表示</button>
+    <button id="hideAll">全て隠す</button>
+    <button id="reshuffle">再抽選</button>
+    <span class="score" id="score">0 / 0 表示</span>
+  </div>
+
+  <div id="views"></div>
+
+  <footer>タップで答えを表示 ・ ◎ 得意にすると苦手から外れます（保存）・ 🔊 で発音を再生。</footer>
+</div>
+<script src="assets/cards.js?v=2"></script>
+<script src="assets/progress.js?v=2"></script>
+<script src="assets/review.js?v=2"></script>
+</body>
+</html>

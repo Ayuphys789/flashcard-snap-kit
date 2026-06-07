@@ -1,0 +1,19 @@
+# Vocabulary-book photos are copyrighted — never commit them.
+# Keep the folder and its README, ignore all image/pdf files.
+scans/*
+!scans/README.md
+
+# Build output for Cloudflare Pages direct upload
+dist/
+
+# Assembled public-demo tree (scripts/build-public.sh) — regenerate, don't commit
+public-demo/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+node_modules/
+*.log

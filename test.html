@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Flashcards">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="assets/icon-180.png">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
+<title>単語テスト</title>
+<link rel="stylesheet" href="assets/style.css?v=2">
+</head>
+<body>
+<div class="wrap">
+  <a class="backlink" href="index.html">← 一覧へ</a>
+  <header>
+    <h1 id="pageTitle">単語テスト</h1>
+    <p class="lead" id="pageSource"></p>
+  </header>
+
+  <nav class="pagenav">
+    <a class="navbtn" id="prevPage">← 前のページ</a>
+    <span class="navpos" id="navpos"></span>
+    <a class="navbtn" id="nextPage">次のページ →</a>
+  </nav>
+
+  <div class="stats" id="stats"></div>
+
+  <div class="tabs" id="tabs"></div>
+
+  <div class="toolbar">
+    <button id="showAll">全て表示</button>
+    <button id="hideAll">全て隠す</button>
+    <button id="shuffle">シャッフル</button>
+    <button id="resetOrder">並び順を戻す</button>
+    <button id="weakOnly">苦手のみ</button>
+    <span class="score" id="score">0 / 0 表示</span>
+  </div>
+
+  <div id="views"></div>
+
+  <footer>タップで答えを表示 ・ ◎ 得意／✕ 苦手 を記録（保存）・ 🔊 で発音を再生。</footer>
+</div>
+<script src="assets/cards.js?v=2"></script>
+<script src="assets/progress.js?v=2"></script>
+<script src="assets/app.js?v=2"></script>
+</body>
+</html>

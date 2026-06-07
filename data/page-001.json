@@ -1,0 +1,39 @@
+{
+  "id": "001",
+  "title": "韓国語のあいさつ・基礎",
+  "source": "デモ用サンプル（著作権物を含みません）",
+  "lang": "ko-KR",
+  "modes": ["term", "sentence"],
+  "terms": [
+    { "id": "t1", "term": "안녕하세요", "tag": "あいさつ", "translation": "こんにちは" },
+    { "id": "t2", "term": "감사합니다", "tag": "あいさつ", "translation": "ありがとうございます" },
+    { "id": "t3", "term": "네", "tag": "副", "translation": "はい" },
+    { "id": "t4", "term": "아니요", "tag": "副", "translation": "いいえ" },
+    { "id": "t5", "term": "물", "tag": "名", "translation": "水" },
+    { "id": "t6", "term": "책", "tag": "名", "translation": "本" },
+    { "id": "t7", "term": "학교", "tag": "名", "translation": "学校" },
+    { "id": "t8", "term": "친구", "tag": "名", "translation": "友達" },
+    { "id": "t9", "term": "먹다", "tag": "動", "translation": "食べる" },
+    { "id": "t10", "term": "가다", "tag": "動", "translation": "行く" }
+  ],
+  "sentences": [
+    {
+      "id": "s1",
+      "text": "안녕하세요? 만나서 반가워요.",
+      "translation": "こんにちは。お会いできてうれしいです。",
+      "notes": [ ["만나서", "会えて"], ["반가워요", "うれしいです"] ]
+    },
+    {
+      "id": "s2",
+      "text": "물 좀 주세요.",
+      "translation": "お水をください。",
+      "notes": [ ["좀", "ちょっと・少し"], ["주세요", "ください"] ]
+    },
+    {
+      "id": "s3",
+      "text": "친구하고 학교에 가요.",
+      "translation": "友達と学校に行きます。",
+      "notes": [ ["하고", "〜と"], ["에", "〜に（方向）"], ["가요", "行きます"] ]
+    }
+  ]
+}

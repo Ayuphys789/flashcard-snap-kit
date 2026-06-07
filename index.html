@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Flashcards">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="assets/icon-180.png">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
+<title>パシャっと単語帳</title>
+<link rel="stylesheet" href="assets/style.css?v=2">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1 id="title">パシャっと単語帳</h1>
+    <p class="lead" id="subtitle"></p>
+  </header>
+  <a class="review-link" href="review.html">苦手の復習（全ページ横断・ランダム出題）</a>
+  <ul class="page-list" id="list"></ul>
+  <div id="msg"></div>
+</div>
+<script src="assets/cards.js?v=2"></script>
+<script src="assets/progress.js?v=2"></script>
+<script>
+function esc(s){ return FTKCards.esc(s); }
+
+async function fillPies(pageId, container){
+  let pdata;
+  try{ pdata = await (await fetch('data/page-'+pageId+'.json',{cache:'no-cache'})).json(); }catch(e){ return; }
+  ['term','sentence','grammar'].forEach(mode=>{
+    const arr = mode==='term' ? (pdata.terms||[]) : mode==='sentence' ? (pdata.sentences||[]) : (pdata.grammar||[]);
+    if(!arr.length) return;
+    const ids = arr.map((it,i)=>(it && it.id) ? it.id : (mode[0]+i));
+    const c = FTKProgress.counts(pageId, ids);
+    container.appendChild(FTKCards.makePie(c.good, c.weak, c.total, { size:44, label: FTKCards.MODE_META[mode].label }));
+  });
+}
+
+async function load(){
+  await FTKProgress.init();
+  let data;
+  try{ data = await (await fetch('data/index.json',{cache:'no-cache'})).json(); }
+  catch(e){ document.getElementById('msg').innerHTML='<div class="err">data/index.json を読み込めませんでした。</div>'; return; }
+
+  if(data.title) document.getElementById('title').textContent=data.title;
+  if(data.subtitle) document.getElementById('subtitle').textContent=data.subtitle;
+
+  const ul=document.getElementById('list');
+  const pages=data.pages||[];
+  pages.forEach(p=>{
+    const li=document.createElement('li');
+    const a=document.createElement('a'); a.className='page-link'; a.href='test.html?page='+encodeURIComponent(p.id);
+    const left=document.createElement('div'); left.className='page-text';
+    left.innerHTML='<div class="pt">'+esc(p.title)+'</div>'+(p.source?'<div class="ps">'+esc(p.source)+'</div>':'');
+    const pies=document.createElement('div'); pies.className='page-pies';
+    a.append(left, pies);
+    li.appendChild(a); ul.appendChild(li);
+    fillPies(p.id, pies);
+  });
+  if(!pages.length) document.getElementById('msg').innerHTML='<div class="empty">ページがまだありません。</div>';
+}
+load();
+</script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+:root{
+  --bg:#f3f0ea; --card:#fffdf8; --ink:#262019; --sub:#6b6256;
+  --line:#d9d0c0; --accent:#9a3b3b; --accent2:#2f5d6b; --reveal:#fbf5ea;
+  /* 苦手/得意は色覚多様性に配慮し「青×オレンジ」軸（Okabe–Ito 系）を使用 */
+  --point:#8a6a3f; --weak:#c2410c; --good:#0072b2;
+}
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  font-family:"Noto Sans","Apple SD Gothic Neo","Hiragino Sans",system-ui,sans-serif;
+  background:var(--bg); color:var(--ink); line-height:1.7;
+  -webkit-text-size-adjust:100%;
+}
+.wrap{max-width:760px; margin:0 auto; padding:22px 16px 90px;}
+header{text-align:center; margin-bottom:8px;}
+h1{font-size:1.45rem; margin:.2em 0; letter-spacing:.02em;}
+.lead{color:var(--sub); font-size:.85rem; margin:0 0 16px;}
+a{color:var(--accent2);}
+
+.page-list{list-style:none; padding:0; margin:0;}
+.page-list li{margin-bottom:10px;}
+.page-list a{
+  display:block; background:var(--card); border:1px solid var(--line);
+  border-radius:12px; padding:14px 16px; text-decoration:none; color:var(--ink);
+  box-shadow:0 1px 2px rgba(0,0,0,.04);
+}
+.page-list .pt{font-size:1.05rem; font-weight:bold;}
+.page-list .ps{font-size:.78rem; color:var(--sub);}
+
+.tabs{display:flex; gap:6px; justify-content:center; margin-bottom:10px; flex-wrap:wrap;}
+.tabs button{
+  font-family:inherit; font-size:.86rem; padding:9px 18px; border-radius:999px 999px 0 0;
+  border:1px solid var(--line); border-bottom:none; background:var(--bg);
+  color:var(--sub); cursor:pointer;
+}
+.tabs button.active{background:var(--card); color:var(--accent); font-weight:bold;}
+
+.toolbar{
+  display:flex; gap:8px; justify-content:center; flex-wrap:wrap; align-items:center;
+  position:sticky; top:0; padding:12px 0; background:var(--bg);
+  z-index:5; border-bottom:1px solid var(--line); margin-bottom:8px;
+}
+.toolbar button{
+  font-family:inherit; font-size:.78rem; padding:8px 13px; border-radius:999px;
+  border:1px solid var(--line); background:var(--card); color:var(--ink); cursor:pointer;
+}
+.toolbar button:active{transform:translateY(1px);}
+.toolbar button.on{background:var(--accent); color:#fff; border-color:var(--accent);}
+.score{font-size:.78rem; color:var(--sub); margin-left:4px;}
+
+section{margin-top:8px;}
+.sec-title{
+  font-size:1.02rem; font-weight:bold; color:var(--accent);
+  border-bottom:2px solid var(--accent); padding-bottom:6px; margin:18px 0 4px;
+}
+.alt-sec .sec-title{color:var(--accent2); border-bottom-color:var(--accent2);}
+.sec-note{font-size:.8rem; color:var(--sub); margin:6px 0 14px;}
+
+.q{
+  background:var(--card); border:1px solid var(--line); border-radius:12px;
+  padding:13px 15px; margin-bottom:10px; box-shadow:0 1px 2px rgba(0,0,0,.04);
+}
+.q.weak{border-color:var(--weak); box-shadow:0 0 0 1px var(--weak) inset;}
+.q.good{border-color:var(--good); box-shadow:0 0 0 1px var(--good) inset;}
+.q-head{display:flex; align-items:flex-start; gap:10px;}
+.q-actions{flex:none; display:flex; align-items:center; gap:8px; margin-left:auto;}
+.q-src{font-size:.72rem; color:var(--sub); margin-bottom:6px;}
+.num{
+  flex:none; width:1.9em; height:1.9em; display:flex; align-items:center;
+  justify-content:center; border-radius:50%; background:var(--accent);
+  color:#fff; font-size:.74rem; font-weight:bold;
+}
+.alt-sec .num{background:var(--accent2);}
+.term{font-size:1.32rem; font-weight:bold; flex:1; min-width:0; word-break:keep-all;}
+.sentence{font-size:1.18rem; flex:1; min-width:0; line-height:1.6; word-break:keep-all;}
+
+.icon-btn{
+  flex:none; font-family:inherit; font-size:1rem; width:2.1em; height:2.1em;
+  border-radius:50%; border:1px solid var(--line); background:transparent;
+  cursor:pointer; padding:0; line-height:1;
+}
+.icon-btn.speak{color:var(--accent2);}
+.icon-btn.st-good{color:#b9b1a3;}
+.icon-btn.st-good.on{color:#fff; background:var(--good); border-color:var(--good);}
+.icon-btn.st-weak{color:#b9b1a3;}
+.icon-btn.st-weak.on{color:#fff; background:var(--weak); border-color:var(--weak);}
+
+.reveal-btn{
+  flex:none; font-family:inherit; font-size:.76rem; padding:6px 14px;
+  border-radius:999px; border:1px solid var(--accent); color:var(--accent);
+  background:transparent; cursor:pointer; white-space:nowrap;
+}
+.alt-sec .reveal-btn{border-color:var(--accent2); color:var(--accent2);}
+.reveal-btn.shown{background:var(--accent); color:#fff;}
+.alt-sec .reveal-btn.shown{background:var(--accent2);}
+
+.ans{max-height:0; overflow:hidden; transition:max-height .3s ease, margin .3s ease;}
+.ans.open{max-height:700px; margin-top:12px;}
+.ans-inner{
+  background:var(--reveal); border-left:3px solid var(--accent);
+  padding:10px 14px; border-radius:6px;
+}
+.alt-sec .ans-inner{border-left-color:var(--accent2);}
+.tag{
+  display:inline-block; font-size:.7rem; color:#fff; background:var(--sub);
+  border-radius:4px; padding:1px 7px; margin-right:6px; vertical-align:middle;
+}
+.meaning{font-size:1.02rem;}
+.trans{font-size:1.02rem; margin:0 0 8px;}
+.trans b{color:var(--accent2);}
+.notes{margin:8px 0 0; padding:0; list-style:none; font-size:.86rem;}
+.notes li{margin:3px 0; padding-left:1em; text-indent:-1em;}
+.notes .k{font-weight:bold; color:var(--ink);}
+.point{font-size:.82rem; color:var(--point); margin:8px 0 0;}
+.point::before{content:"▸ "; font-weight:bold;}
+.example{font-size:.9rem; color:var(--sub); margin:6px 0 0;}
+
+.hidden{display:none;}
+.empty{text-align:center; color:var(--sub); font-size:.85rem; padding:30px 0;}
+.err{text-align:center; color:var(--weak); font-size:.9rem; padding:30px 0;}
+footer{text-align:center; color:var(--sub); font-size:.72rem; margin-top:36px;}
+.backlink{display:inline-block; margin-bottom:10px; font-size:.82rem;}
+
+/* Per-card "alt" theming (blue) — works outside an .alt-sec section too
+   (e.g. the cross-page review page mixes modes in one list). */
+.q.alt .num{background:var(--accent2);}
+.q.alt .reveal-btn{border-color:var(--accent2); color:var(--accent2);}
+.q.alt .reveal-btn.shown{background:var(--accent2); color:#fff;}
+.q.alt .ans-inner{border-left-color:var(--accent2);}
+
+/* Prev / next page navigation */
+.pagenav{display:flex; align-items:center; justify-content:space-between; gap:10px; margin:0 0 12px;}
+.navbtn{
+  font-size:.84rem; text-decoration:none; color:var(--accent2); white-space:nowrap;
+  padding:7px 13px; border:1px solid var(--line); border-radius:999px; background:var(--card);
+}
+.navbtn:active{transform:translateY(1px);}
+.navbtn.disabled{opacity:.35; pointer-events:none;}
+.navpos{font-size:.78rem; color:var(--sub);}
+
+/* "Weak review" entry on the index page */
+.review-link{
+  display:block; text-align:center; text-decoration:none;
+  background:var(--accent); color:#fff; font-weight:bold; font-size:.92rem;
+  border-radius:12px; padding:13px 16px; margin:0 0 16px;
+  box-shadow:0 1px 2px rgba(0,0,0,.06);
+}
+.review-link:active{transform:translateY(1px);}
+
+/* Mastery pie (得意割合) — green = good, red = weak, grey = untouched */
+.pie{
+  border-radius:50%; position:relative; flex:none;
+  display:inline-flex; align-items:center; justify-content:center;
+}
+.pie-hole{
+  position:absolute; width:62%; height:62%; border-radius:50%; background:var(--card);
+  display:flex; align-items:center; justify-content:center;
+  font-size:.62rem; font-weight:bold; color:var(--ink);
+}
+.pie-wrap{display:flex; flex-direction:column; align-items:center; gap:3px;}
+.pie-label{font-size:.66rem; color:var(--sub); white-space:nowrap;}
+
+/* Per-page stats bar (test page) */
+.stats{display:flex; gap:22px; justify-content:center; flex-wrap:wrap; margin:2px 0 16px;}
+
+/* Index page: page row = text on the left, mastery pies on the right */
+.page-list a.page-link{display:flex; align-items:center; gap:12px;}
+.page-text{min-width:0; flex:1;}
+.page-pies{flex:none; display:flex; gap:12px;}
