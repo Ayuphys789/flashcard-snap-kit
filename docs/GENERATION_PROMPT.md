@@ -44,10 +44,12 @@ words, new vocabulary). Each note is a 2-element array
 Standalone points: `id`, `point`, `explanation`, optional `example`.
 
 ## 古文・漢文 (classical Japanese / Chinese)
-Use the `sentence` mode and map fields as follows:
-- 古文: `text` = original passage; `translation` = 現代語訳;
-  `notes` = 語の意味 (e.g. 助動詞の意味・識別); `grammar` = 文法ポイント.
-- 漢文: `text` = 白文（返り点つき。返り点は上付きで「<sup>レ</sup>」等と表現してよい）;
+Treat them like any other language: use **`term` (単語) + `sentence` (例文)** modes.
+- 単語: 古文単語・重要語を `term` (古語) → `translation` (現代語の意味), optional `tag`.
+- 古文 例文: `text` = original passage; `translation` = 現代語訳;
+  `notes` = 語の意味 (`["古語","意味"]`, excluding any word already in `terms[]`);
+  optional per-sentence `grammar` = 文法ポイント (助動詞の識別など).
+- 漢文 例文: `text` = 白文（返り点つき。返り点は上付きで「<sup>レ</sup>」等と表現してよい）;
   put 書き下し文 either in `reading` of a term, or as the first `notes` line
   `["書き下し", "…"]`; `translation` = 現代語訳; `grammar` = 句形の解説.
 - Transcribe okurigana, 返り点, and 振り仮名 as faithfully as the image allows.
